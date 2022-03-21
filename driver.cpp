@@ -6,7 +6,7 @@ using namespace std;
 int main() {
     LinkedList list;
     for (int i = 0; i < 15; i++) {
-        int* x = new int[1];
+        int* x = new int;
         *x = i*i;
         list.addFirst(x);
     }

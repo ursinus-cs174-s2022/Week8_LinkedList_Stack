@@ -58,6 +58,14 @@ class LinkedList {
         void* removeFirst();
 
         /**
+         * @brief Remove the last object from the list and return
+         * what it was
+         * 
+         * @return void* 
+         */
+        void* removeLast();
+
+        /**
          * @brief Loop through the linked list and return
          * the elements in an array
          * 
@@ -75,5 +83,14 @@ class Stack {
         void push(void* obj);
         void* pop();
 };
+
+/**
+ * @brief Determine whether this string is a palindrome
+ * 
+ * @param s String
+ * @return true If palindrome
+ * @return false Otherwise
+ */
+bool isPalindrome(char* s);
 
 #endif

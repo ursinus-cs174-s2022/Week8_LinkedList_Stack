@@ -85,6 +85,19 @@ void* LinkedList::removeFirst() {
 }
 
 /**
+ * @brief Remove the last object from the list and return
+ * what it was
+ * 
+ * @return void* 
+ */
+void* LinkedList::removeLast() {
+    void* ret = NULL;
+    // TODO: Fill this in
+
+    return ret;
+}
+
+/**
  * @brief Loop through the linked list and return
  * the elements in an array
  * 
@@ -92,8 +105,14 @@ void* LinkedList::removeFirst() {
  * @return void** 
  */
 void** LinkedList::toArray(int* N) {
-    // TODO: Fill this in
-    return NULL;
+    *N = this->N;
+    void** arr = new void*[*N];
+    LinkedNode* node = head;
+    for (int i = 0; i < *N; i++) {
+        arr[i] = node->obj;
+        node = node->next;
+    }
+    return arr;
 }
 
 
@@ -112,4 +131,26 @@ void* Stack::pop() {
     // TODO: Fill this in
 
     return ret;
+}
+
+/**
+ * @brief Determine whether this string is a palindrome
+ * 
+ * @param s String
+ * @return true If palindrome
+ * @return false Otherwise
+ */
+bool isPalindrome(char* s) {
+    bool res = false;
+    // Step 1: Figure out length of string
+    int N = 0;
+    while (s[N] != '\0') {
+        N++;
+    }
+    // Step 2: Use a stack to figure out if this
+    // is a palindrome
+    Stack stack;
+    // TODO: Fill this in
+
+    return res;
 }
