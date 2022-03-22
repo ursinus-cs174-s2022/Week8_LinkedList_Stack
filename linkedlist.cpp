@@ -79,8 +79,19 @@ void LinkedList::remove(void* obj) {
  */
 void* LinkedList::removeFirst() {
     void* ret = NULL;
-    // TODO: Fill this in
-
+    if (head != NULL) {
+        // Unwrap the object from within the node
+        ret = this->head->obj; 
+        // Keep a reference to the current head before
+        // we overwrite that reference
+        LinkedNode* oldHead = head; 
+        // Make the head point to the next node
+        this->head = this->head->next;
+        // Free the memory from the original head's LinkedNode
+        delete oldHead;
+        // Keep track of the fact that we deleted something
+        this->N--;
+    }
     return ret;
 }
 
@@ -123,14 +134,15 @@ Stack::Stack() {
 }
 
 void Stack::push(void* obj) {
-    // TODO: Fill this in
+    this->list.addFirst(obj);
 }
 
 void* Stack::pop() {
-    void* ret = NULL;
-    // TODO: Fill this in
+    return this->list.removeFirst();
+}
 
-    return ret;
+int Stack::size() {
+    return list.size();
 }
 
 /**
@@ -141,16 +153,23 @@ void* Stack::pop() {
  * @return false Otherwise
  */
 bool isPalindrome(char* s) {
-    bool res = false;
-    // Step 1: Figure out length of string
-    int N = 0;
-    while (s[N] != '\0') {
-        N++;
-    }
-    // Step 2: Use a stack to figure out if this
+    bool res = true;
+    // Use a stack to figure out if this
     // is a palindrome
     Stack stack;
     // TODO: Fill this in
+    int i = 0;
+    while (s[i] != '\0') {
+        stack.push(&s[i]);
+        i++;
+    }
+    i = 0;
+    while (s[i] != '\0') {
+        char* ptr = (char*)stack.pop();
+        char c = *ptr;
+        res = res && (c == s[i]);
+        i++;
+    }
 
     return res;
 }

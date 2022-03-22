@@ -77,9 +77,11 @@ class LinkedList {
 
 
 class Stack {
+    private:
+        LinkedList list;
     public:
         Stack();
-
+        int size();
         void push(void* obj);
         void* pop();
 };

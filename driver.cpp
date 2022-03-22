@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include "linkedlist.h"
 
 using namespace std;
@@ -10,15 +11,14 @@ int main() {
         *x = i*i;
         list.addFirst(x);
     }
-
-    int N;
-    void** arr = list.toArray(&N);
-    for (int i = 0; i < N; i++) {
-        cout << *((int*)arr[i]) << " ";
-        delete (int*)arr[i];
+    int i = 0;
+    while(list.size() > 0) {
+        void* elem = list.removeFirst();
+        cout << *((int*)elem) << " ";
+        delete (int*)elem;
+        i++;
     }
     cout << "\n";
-    delete[] arr;
 
     return 0;
 }
